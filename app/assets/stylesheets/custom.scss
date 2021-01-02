@@ -137,5 +137,16 @@ h1,h2 {
             height: 30px;
             margin-left: 20px;
         }
+        .topic-index-icon-red {
+            // mask-image: url(./icons/heart-black.png);
+            // -webkit-mask-image: url(./icons/heart-black.png);
+            // display: inline-block;
+            // mask: no-repeat center/70%;
+            // -webkit-mask: no-repeat center/70%;
+            background-color: #e54747;
+            width: 35px;
+            height: 30px;
+            margin-left: 20px;
+        }    
     }
 }
