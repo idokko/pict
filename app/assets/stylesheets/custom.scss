@@ -149,4 +149,15 @@ h1,h2 {
             margin-left: 20px;
         }    
     }
+    
+}
+
+.comment-new-wrapper {
+    padding-top: 120px;
+    .comment-group {
+        margin-bottom: 20px;
+        .comment-control {
+            height: 45px;
+        }
+    }
 }
