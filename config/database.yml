@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: production
+  database: postgresql
   username: unicode
   pool: 5
