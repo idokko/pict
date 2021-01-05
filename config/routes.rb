@@ -23,11 +23,11 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
   
-  # resources :users
-  # resources :topics
-  # resources :comments
+  resources :users
+  resources :topics
+  resources :comments
   
-  # get 'comments/new'
-  # post '/comments', to: 'comments#create'
-  # delete '/comments', to: 'comments#destroy'
+  get 'comments/new'
+  post '/comments', to: 'comments#create'
+  delete '/comments', to: 'comments#destroy'
 end
