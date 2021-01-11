@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
     def new
-      @comment = Comment.new 
+      @topic = Topic.find(params[:topic_id])
+      @comment = Comment.new
     end
     
     # def index
@@ -8,11 +9,12 @@ class CommentsController < ApplicationController
     # end
     
     def create
-      @comment = Comment.new
+      @comment = current_user.comments.new(comment_params)
       @comment.user_id = current_user.id
-      @comment.topic_id = params[:topic_id]
+      topic = Topic.find(params[:topic_id])
+      @comment = topic.comments.new
        
-      # binding.pry
+       #binding.pry
       if @comment.save
           redirect_to topics_path, success: 'コメントしました'
       else
@@ -22,7 +24,7 @@ class CommentsController < ApplicationController
     end
     
     private
-        def comment_params
-          params.require(:comment).permit(:comment) 
-        end
+    def comment_params
+      params.require(:comment).permit(:body) 
+    end
 end

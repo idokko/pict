@@ -21,7 +21,7 @@
                         <%= topic.favorite_users.count %>
                         
                         <% if logged_in? %>
-                            <%= link_to new_comment_path do %>
+                            <%= link_to topic_comments_new_path(topic_id: topic.id), method: :get do %>
                                 <%= image_tag 'icons/comment.png', class: 'topic-index-icon' %>
                             <% end %>
                         <% end %>
@@ -29,7 +29,6 @@
                             <%= topic.description %>
                         </p>
                         <p class="comment-text">
-                            <%# binding.pry %>
                             <% topic.comments.each do |comment| %>
                                 <p>
                                     <%= comment.body %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # root 'pages#index'
   
   root 'pages#index'
+  # get 'pages/index', to: 'pages#index'
   get 'pages/help'
   
   resources :users
@@ -23,11 +24,17 @@ Rails.application.routes.draw do
   post '/favorites', to: 'favorites#create'
   delete '/favorites', to: 'favorites#destroy'
   
+  # root to: 'topic_id/comment#index'
   resources :users
-  resources :topics
-  resources :comments
+  resources :topics do
+    resources :comments #, only: [:index, :show, :new, :create, :destroy, :edit, :update]
+    # get 'pages/help'
+    get 'comments/new', to: 'comments#new'
+    post ' /topics/:topic_id/comments', to: 'comments#create'
+    delete '/comments', to: 'comments#destroy'
+  end
+  # resources :topics do
+  #   resources :comments
+  # end
   
-  get 'comments/new'
-  post '/comments', to: 'comments#create'
-  delete '/comments', to: 'comments#destroy'
 end
