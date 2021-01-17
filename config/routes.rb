@@ -29,9 +29,9 @@ Rails.application.routes.draw do
   resources :topics do
     resources :comments #, only: [:index, :show, :new, :create, :destroy, :edit, :update]
     # get 'pages/help'
-    get 'comments/new', to: 'comments#new'
-    post ' /topics/:topic_id/comments', to: 'comments#create'
-    delete '/comments', to: 'comments#destroy'
+    # get 'comments/new', to: 'comments#new'
+    # post ' /topics/:topic_id/comments', to: 'comments#create'
+    # delete '/comments', to: 'comments#destroy'
   end
   # resources :topics do
   #   resources :comments

@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
     def new
       @topic = Topic.find(params[:topic_id])
-      @comment = Comment.new
+      @comment = @topic.comments.new
     end
     
     # def index
@@ -9,17 +9,21 @@ class CommentsController < ApplicationController
     # end
     
     def create
-      @comment = current_user.comments.new(comment_params)
-      @comment.user_id = current_user.id
       topic = Topic.find(params[:topic_id])
-      @comment = topic.comments.new
-       
-       #binding.pry
+      @comment = topic.comments.new(comment_params)
+      @comment.user_id = current_user.id
+      # @comment = current_user.comments.new(comment_params)
+      # topic = Topic.find(params[:topic_id])
+      # @comment.topic_id = topic.id
+      
+      # binding.pry
       if @comment.save
           redirect_to topics_path, success: 'コメントしました'
       else
-          flash.now[:danger] = "コメントできませんでした"
-          render :new
+        @topic = Topic.find(params[:topic_id])
+        flash.now[:danger] = "コメントできませんでした"
+        # render :new
+        render 'comments/new', id: params[:topic_id]
       end
     end
     
